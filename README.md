@@ -73,9 +73,10 @@ We can use this feature to add labels to the nodes to advertise hardware feature
 #### Run 
 ```
 $ cd node-feature-discovery
-$ ./node_feature_discovery.sh
+$ ./node_feature_discovery.sh <TYPE>
+TYPE can be a job or daemonset
 ```
-This script will create pods equal to the number of nodes using a privileged serviceaccount after creating a role and binding the default user to view the pods in the node-feature-discovery namespace. The nodes will get labeled with the hardware features available on the node. Following are the labels which got added to the nodes after a sample run:
+This scripts supports running the node-feature-discovery as a job and daemonset. It ensures that each node has a pod running on it by using a privileged serviceaccount after creating a role and binding the default user to view the pods in the node-feature-discovery namespace. The nodes will get labeled with the hardware features available on the node. Following are the labels which got added to the nodes after a sample run:
 
 ```
 $ oc get nodes -o json | jq .items[].metadata.labels 
